@@ -2,11 +2,11 @@ export const links = [
   { name: "How it works",
     href: "#how-it-works"
   },
-  { name: "Price",
-    href: "#price"
+  { name: "Pricing",
+    href: "#pricing"
   },
   { name: "Contact",
-    href: "#contact"
+    href: "#cta"
   },
   { name: "Dashboard",
     href: "/dashboard"
