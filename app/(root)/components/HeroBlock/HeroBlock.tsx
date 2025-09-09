@@ -1,7 +1,7 @@
 "use client";
 import { TypeAnimation } from "react-type-animation";
 import { Sparkles } from "lucide-react";
-import { Button } from "@/components/UI/button";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
 export function HeroBlock() {

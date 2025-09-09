@@ -1,4 +1,4 @@
-import { Button } from "@/components/UI/button";
+import { Button } from "@/components/ui/button";
 import { ArrowBigRight, Sparkles } from "lucide-react";
 import { CtaData } from "./Cta.data";
 
