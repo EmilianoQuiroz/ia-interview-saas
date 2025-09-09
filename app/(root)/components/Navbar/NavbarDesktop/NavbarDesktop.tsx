@@ -1,5 +1,5 @@
 import { links } from '../Navbar.data'
-import { Button } from '@/components/UI/button'
+import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 
 export function NavbarDesktop() {
