@@ -1,6 +1,7 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Metadata } from "next";
 import { AppSidebar } from "./components";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
   title: "Dashboard | IA Interview",
@@ -17,7 +18,10 @@ export default function DashboardLayout({
         <AppSidebar />
         <main className="w-full min-h-screen p-6">
           <div className="flex justify-between">
-            <SidebarTrigger />
+            <SidebarTrigger className="text-white" />
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
           {children}
         </main>

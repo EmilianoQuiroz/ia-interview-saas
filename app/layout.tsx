@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ClerkProvider } from "@clerk/nextjs";
 import { Lato } from "next/font/google";
 import "./globals.css";
 
@@ -7,7 +8,6 @@ const lato = Lato({
   subsets: ["latin"],
   weight: ["400", "700", "900"],
 });
-
 
 export const metadata: Metadata = {
   title: "IA Tech Interview",
@@ -20,12 +20,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-PT">
-      <body
-        className={`${lato.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en-PT">
+        <body className={`${lato.variable} antialiased`}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
