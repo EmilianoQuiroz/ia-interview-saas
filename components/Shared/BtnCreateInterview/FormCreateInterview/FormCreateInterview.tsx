@@ -1,5 +1,6 @@
 "use client";
 import { z } from "zod";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
@@ -22,8 +23,12 @@ import { Input } from "@/components/ui/input";
 import { formSchema } from "./FormCreateInterview.form";
 import { Mic } from "lucide-react";
 import { roles, difficulty } from "./FormCreateInterview.data";
+import { useState } from "react";
+import axios from "axios";
 
 export function FormCreateInterview() {
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -35,10 +40,18 @@ export function FormCreateInterview() {
   });
 
   // 2. Define a submit handler.
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    setIsLoading(true);
+    try {
+      const response = await axios.post("/api/create-interview", values);
+      router.push(`/interviews/${response.data.id}`);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -87,7 +100,7 @@ export function FormCreateInterview() {
             </FormItem>
           )}
         />
-                <FormField
+        <FormField
           control={form.control}
           name="level"
           render={({ field }) => (
@@ -117,6 +130,7 @@ export function FormCreateInterview() {
         <Button
           className="bg-gradient-to-r from-purple-500 to-blue-600 font-bold py-3 px-6 rounded-lg hover:from-purple-700 transition-all duration-100"
           type="submit"
+          disabled={isLoading}
         >
           Comenzar la entrevista
           <Mic />
