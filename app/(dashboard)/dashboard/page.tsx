@@ -2,12 +2,11 @@ import { auth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import {
   CheckCircle,
-  Check,
   TrendingUp,
   ClipboardCheck,
   Clock,
 } from "lucide-react";
-import { MetricCard } from "./components";
+import { MetricCard, InterviewsList } from "./components";
 
 export default async function DashboardPage() {
   const { userId } = await auth();
@@ -57,10 +56,11 @@ export default async function DashboardPage() {
             <strong>💡aviso: </strong>
             Esta es una versión inicial de la aplicación. Próximamente se añadirán
             más funcionalidades y mejoras. ¡Gracias por probarla!
-  
           </div>
         </div>
       </div>
+
+      <InterviewsList />
     </div>
   );
 }
