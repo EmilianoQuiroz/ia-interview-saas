@@ -79,7 +79,7 @@ export function InterviewsList() {
               </span>
               <span className="bg-blue-600/20 border-blue-400/30 border text-sm text-blue-200 py-1 px-3 rounded-full w-fit">{interview.rol}</span>
               <Button variant="ghost" asChild>
-                <Link href={`/dashboard/interviews/${interview.id}`}>
+                <Link href={`/interview/${interview.id}`}>
                   Details
                 </Link>
               </Button>
